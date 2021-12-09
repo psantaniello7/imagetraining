@@ -5,7 +5,7 @@ const multer = require("multer");
 const bodyParser = require("body-parser");
 const pino = require("express-pino-logger")();
 const train = require("@zappar/imagetraining");
-const fs = require("fs").promises;
+const fs = require("fs/promises");
 const app = express();
 
 app.use(cors());
@@ -23,7 +23,7 @@ app.get("/check", function (req, res) {
 
 // configuring the DiskStorage engine.
 const storage = multer.diskStorage({
-  destination: "assets/",
+  destination: "public/",
   filename: function (req, file, cb) {
     cb(null, file.originalname+'.png');
   },
@@ -42,10 +42,10 @@ async function perform(path, name, res) {
 
   let png = await fs.readFile(path);
   let target = await train.train(png);
-  await fs.writeFile("assets/" + filename + ".zpt", target);
+  await fs.writeFile("public/" + filename + ".zpt", target);
   fs.unlink(path);
 
-  res.sendFile(filename+'.zpt',{root: "assets"});
+  res.sendFile(filename+'.zpt',{root: "public"});
   // res.send({
   //     path:'http://localhost:4001/public/'+filename+".zpt"
   // })
