@@ -1,7 +1,6 @@
 {
   "name": "zapparimagetraining",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,6 +16,18 @@
     "http": "^0.0.1-security",
     "morgan": "^1.10.0",
     "multer": "^1.4.3",
-    "path": "^0.12.7"
-  }
+    "path": "^0.12.7",
+    "vercel": "^23.1.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psantaniello7/imagetraining.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/psantaniello7/imagetraining/issues"
+  },
+  "homepage": "https://github.com/psantaniello7/imagetraining#readme",
+  "description": ""
 }
