@@ -7,6 +7,7 @@ const pino = require("express-pino-logger")();
 const train = require("@zappar/imagetraining");
 const fs = require("fs/promises");
 const app = express();
+const AWS = require('aws-sdk')
 
 app.use(cors());
 app.use(morgan("dev"));
@@ -43,12 +44,29 @@ async function perform(path, name, res) {
   let png = await fs.readFile(path);
   let target = await train.train(png);
   await fs.writeFile("public/" + filename + ".zpt", target);
+  uploadFile(res)
   fs.unlink(path);
 
-  res.sendFile(filename+'.zpt',{root: "public"});
-  // res.send({
-  //     path:'http://localhost:4001/public/'+filename+".zpt"
-  // })
+  // res.sendFile(filename+'.zpt',{root: "public"});
+  res.send({
+      // path:'http://localhost:4001/public/'+filename+".zpt"
+      path: 'https://microexp-image-training.s3.us-west-2.amazonaws.com/' + filename + ".zpt"
+  })
+}
+
+const uploadFile = (fileName) => {
+  const fileContent = fs.readFileSyc(fileName);
+
+  const params = {
+    Bucket: 'microexp-image-training' ,
+    Key: 'target.zpt',
+    Body: fileContent
+  };
+
+  s3.upload(params, function(err, data) {
+    throw err;
+  })
+  console.log(`File uploaded successfully. ${data.location}`);
 }
 
 const port = process.env.PORT || 4001;

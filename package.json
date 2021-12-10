@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@zappar/imagetraining": "^1.0.4",
+    "aws-sdk": "^2.1046.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-pino-logger": "^7.0.0",
@@ -19,7 +20,6 @@
     "path": "^0.12.7",
     "vercel": "^23.1.2"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/psantaniello7/imagetraining.git"
