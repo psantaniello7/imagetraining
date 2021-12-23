@@ -45,7 +45,7 @@ async function perform(path, name, res) {
   await fs.writeFile("public/" + filename + ".zpt", target);
 
   fs.unlink(path);
-
+res.send({status: 200, data: target})
   // res.sendFile(filename+'.zpt',{root: "public"});
   res.send({
       // path:'http://localhost:4001/public/'+filename+".zpt"
