@@ -1,6 +1,7 @@
 {
   "name": "zapparimagetraining",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,23 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "@zappar/imagetraining": "^1.0.4",
-    "aws-sdk": "^2.1046.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-pino-logger": "^7.0.0",
     "http": "^0.0.1-security",
     "morgan": "^1.10.0",
     "multer": "^1.4.3",
-    "path": "^0.12.7",
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/psantaniello7/imagetraining.git"
-  },
-  "keywords": [],
-  "bugs": {
-    "url": "https://github.com/psantaniello7/imagetraining/issues"
-  },
-  "homepage": "https://github.com/psantaniello7/imagetraining#readme",
-  "description": ""
+    "path": "^0.12.7"
+  }
 }
