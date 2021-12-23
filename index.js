@@ -47,10 +47,10 @@ async function perform(path, name, res) {
   fs.unlink(path);
 res.send({status: 200, data: target})
   // res.sendFile(filename+'.zpt',{root: "public"});
-  res.send({
+  // res.send({
       // path:'http://localhost:4001/public/'+filename+".zpt"
-      path: 'https://microexp-image-training.s3.us-west-2.amazonaws.com/' + filename + ".zpt"
-  })
+  //     path: 'https://microexp-image-training.s3.us-west-2.amazonaws.com/' + filename + ".zpt"
+  // })
 }
 
 const port = process.env.PORT || 4001;
