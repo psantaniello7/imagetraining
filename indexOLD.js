@@ -6,9 +6,7 @@ const bodyParser = require("body-parser");
 const pino = require("express-pino-logger")();
 const train = require("@zappar/imagetraining");
 const fs = require("fs/promises");
-const fsa = require("fs")
 const app = express();
-var https = require('https');
 
 app.use(cors());
 app.use(morgan("dev"));
@@ -16,13 +14,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use(pino);
-
-var keys =  {
-
- key: fsa.readFileSync("keys/key.pem"),
-
- cert: fsa.readFileSync("keys/cert.pem")
-}
 
 app.get("/check", function (req, res) {
   res.send("working");
@@ -53,8 +44,8 @@ async function perform(path, name, res) {
   let target = await train.train(png);
   await fs.writeFile("public/" + filename + ".zpt", target);
   fs.unlink(path);
-  res.send({status: 200, data: target})
-  // res.sendFile(filename+'.zpt',{root: "public"});
+
+  res.sendFile(filename+'.zpt',{root: "public"});
   // res.send({
   //     path:'http://localhost:4001/public/'+filename+".zpt"
   // })
@@ -64,6 +55,3 @@ const port = process.env.PORT || 4001;
 const server = app.listen(port, () => {
   console.log("Connected to port " + port);
 });
-
-// let httpsServer = https.createServer(keys, app)
-// httpsServer.listen(port)
