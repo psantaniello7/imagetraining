@@ -1,0 +1,45 @@
+<a-scene
+requiredata
+gesture-detector
+card-capture
+renderer="colorManagement: true"
+>
+  <a-assets id="assets">
+    <a-asset-item id="target-file" src=""/>
+  </a-assets>
+
+  <a-entity zappar-permissions-ui id="permissions" ></a-entity>
+  <a-entity zappar-compatibility-ui id="compatibility"></a-entity>
+  <a-entity
+    light="
+      type: directional;
+      castShadow: true;
+      color: white;
+      intensity: 0.4"
+    position="5 5 5">
+    </a-entity>
+<a-entity
+    light="
+      type: ambient;
+      color: white;
+      intensity: 1.5"
+    position="5 5 5">
+    </a-entity>
+  <a-entity
+    camera zappar-camera
+    id="camera"
+    raycaster="objects: .cantap"
+    cursor="
+    fuse: false;
+    rayOrigin: mouse;">
+  </a-entity>
+
+  <a-entity  id="image-group" zappar-image="target: #target-file">
+    <a-entity id="target"></a-entity>
+  </a-entity>
+
+  <a-entity zappar-instant="placement-mode: true" id="instant-group">
+    
+  </a-entity>
+
+</a-scene>

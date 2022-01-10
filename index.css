@@ -1,0 +1,126 @@
+#container{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.button {
+  position: relative;
+  /*color:  red;
+  font-size: 2vmax;
+  text-align: center;*/
+  display: inline ;
+  width:  25vmin;
+  height:  50vmin;
+  margin: 2vmin;
+  left:  25vmin;
+  transform: translateX(-75%);
+}
+
+.fullscreen-iframeControls {
+  position: fixed !important;
+  top: 0;
+}
+
+.fullscreen-iframe {
+  position: absolute ;
+  height: 100% ;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+#inline-ar {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#my-iframe.closed {
+  width: 1px;
+  height: 1px;
+}
+
+#iframeControls {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right:0;
+  top:0;
+  left:0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#stopBtn {
+  position: fixed;
+  top: 2.5vmin;
+  right: 2.5vmin;
+  border: 0;
+  height: 15vmin;
+  width:  15vmin;
+  background: none;
+  padding: 0;
+  pointer-events: auto;
+  z-index: 1;
+  background-image: url('./assets/UI/close.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+#iphone12-button {
+  background-image: url('./assets/UI/PDP_UI/iphone12.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+#iphone13-button {
+  background-image: url('./assets/UI/PDP_UI/iphone13.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+#s21-button {
+  background-image: url('./assets/UI/PDP_UI/s21.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+#a02-button {
+  background-image: url('./assets/UI/PDP_UI/a02.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+#a12-button {
+  background-image: url('./assets/UI/PDP_UI/a12.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+#z-flip-button {
+  background-image: url('./assets/UI/PDP_UI/flip.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+#a42-button {
+  background-image: url('./assets/UI/PDP_UI/a42.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+#pixelPro-button {
+  background-image: url('./assets/UI/PDP_UI/pixelPro.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}

@@ -1,0 +1,126 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Micro Experience</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://libs.zappar.com/zappar-aframe/0.3.9/zappar-aframe.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script src="scripts/html2canvas.min.js"></script>
+
+  <script>
+  HTMLCanvasElement.prototype.getContext = function(origFn) {
+    return function(type, attribs) {
+      attribs = attribs || {};
+      attribs.preserveDrawingBuffer = true;
+      return origFn.call(this, type, attribs);
+    };
+  }(HTMLCanvasElement.prototype.getContext);
+  </script>
+  <script src="lib/require.js"></script>
+  <script type="module" src="app.js"></script>
+
+  </script>
+</head>
+
+<body>
+
+<div id="flipBg" class="absolute-fill"></div>
+<!-- On Screen UI -->
+<div id="onScreenUIContainer" style="display: none">
+  <div id="expandContainer" style="display:none">
+    <div id="expandButton" style="display: block"></div>
+    <div id="mainUIContainer" style="display: none">
+      <div id="whiteLine" class="UIElement" style="display: block"></div>
+      <!--div id="separator" style="display: block"></div-->
+      <div id="inSpaceButton" class="UIElement" style="display: inline-block">In space</div>
+      <div id="inHandButton" class="UIElement" style="display: inline-block">In hand</div>
+    </div>
+    <div id="animateUIContainer" class="UIElement"></div>
+    <div id="subMenuContainer">
+      <div id="colorUIContainer" class="UIElement"></div>
+    </div>
+    <div id="colorText" class="UIElement" style="display: block">Color Value</div>
+
+    <div id="playVideoButtonText" class="UIElement" style="display: block"></div>
+    <div id="infoButton" class="UIElement"></div>
+
+  </div>
+</div>
+
+<div id="infoContainer" style="display: none">
+  <div id="helpBackgroundImage"></div>
+  <div id="defaultInfo">
+    <div id="continueButtonDefault" class="continueButton"></div>
+  </div>
+  <div id="inHandInfo">
+    <div id="continueButtonInHand" class="continueButton"></div>
+  </div>
+  <div id="trainingInfo"></div>
+  <div id="infoText"></div>
+  <div id="verizonLogo"></div>
+  <div id="closeButton" style="display: none"></div>
+  <div id="resetButton" style="display: none"></div>
+  <div id="miniRescanButton" style="display: none"></div>
+</div>
+
+<div id="cardCaptureContainer" style="display: none">
+  <img id="cardCaptureImage">
+  <div id="flash"></div>
+  <div id="boundedBox"></div>
+  <div id="nextButton"></div>
+  <!--<div id="closeButton"></div>-->
+  <!--<div id="confirmButton"></div>-->
+</div>
+
+<div id="confirmCardContainer" style="display: none">
+  <div class="crop" id="cropped">
+    <img id="tempHolder">
+  </div>
+  <img id="cardImage">
+  <div id="greenBoundedBox"></div>
+  <div id="rescanButton"></div>
+  <div id="confirmButton"></div>
+</div>
+<script>
+this.scene = null
+function checkIfTouchScreen() {
+  let touchScreen = false
+  if ((navigator.appVersion.indexOf('Android') !== -1) || (navigator.appVersion.indexOf('like Mac') !== -1)) {
+    touchScreen = true
+  } else if ((navigator.appVersion.indexOf('Mac') !== -1) || (navigator.appVersion.indexOf('Win') !== -1) || (navigator.appVersion.indexOf('Linux') !== -1)) {
+    touchScreen = false
+  }
+  return touchScreen
+}
+const isTouchScreen = checkIfTouchScreen()
+
+var cssId = 'Css';
+if (!document.getElementById(cssId))
+{
+    var head  = document.getElementsByTagName('head')[0];
+    var link  = document.createElement('link');
+    link.id   = cssId;
+    link.rel  = 'stylesheet';
+    link.type = 'text/css';
+    if (!isTouchScreen) {
+      link.href = 'desktop.css';
+      this.scene = 'desktop'
+    } else {
+      link.href = 'mobile.css';
+      this.scene = 'mobile'
+    }
+    head.appendChild(link);
+}
+
+var html = 'scenes/'+this.scene+'.html'
+fetch(html)
+  .then(response => response.text())
+  .then(text => document.body.insertAdjacentHTML('beforeend', text))
+</script>
+</body>
+
+</html>

@@ -1,22 +1,21 @@
 {
-  "name": "zapparimagetraining",
+  "name": "herokubuild",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+  "description": "Serving web app locally from your computer can be tricky as browsers require HTTPS certificates to access the camera on your phone through a browser.  As a convenience, 8th Wall has provided a \"serve\" script that will run a local https webserver on your development computer.",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
   },
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "test": "\"echo \\ \"Test \\\" && exit 1\"",
+    "start": "node server.js"
+  },
   "dependencies": {
-    "@zappar/imagetraining": "^1.0.4",
-    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "express-pino-logger": "^7.0.0",
-    "http": "^0.0.1-security",
-    "morgan": "^1.10.0",
-    "multer": "^1.4.3",
-    "path": "^0.12.7"
-  }
+    "fastify": "^3.21.6",
+    "fastify-static": "^4.2.3",
+    "morgan": "^1.10.0"
+  },
+  "author": "infoVision Paolo",
+  "license": "ISC"
 }
